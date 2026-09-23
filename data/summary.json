@@ -722,5 +722,305 @@
    "CreateOracleConfig": 11,
    "CreateTokenEscrow": 11
   }
+ },
+ "hands_on_beta_2026_09_23": {
+  "window_utc": "19:23 to 20:10, September 23 2026",
+  "access": {
+   "gate_copy": "Testnet is live. You're among the first to try Spout Testnet. Drop in the email and passcode we sent you.",
+   "passcode_source": "Spout Telegram, deadline day",
+   "login_utc": "19:23",
+   "access_card": "NO. 255, SOLANA TESTNET"
+  },
+  "network": {
+   "app_rpc": "https://api.devnet.solana.com",
+   "privy_window": "Network devnet",
+   "access_card": "SOLANA TESTNET"
+  },
+  "wallets": {
+   "okx_wallet": {
+    "network_shown": "Solana",
+    "warning": "This contract doesn't exist. Verify your network before you continue.",
+    "confirm": "disabled",
+    "app_toast": "[object Object]"
+   },
+   "privy_embedded": {
+    "address": "A91HbXRaX5RYQFakU8ebK2mAKAt3WhmEc3Uktxyb3aNo",
+    "funded": {
+     "devnet_sol": 1,
+     "devnet_usdc": 20
+    }
+   }
+  },
+  "faucets": {
+   "app_config_TEST_FAUCETS": {
+    "sol": "https://faucet.solana.com",
+    "usdc": "https://faucet.circle.com"
+   },
+   "circle_limit": "20 USDC per address every 2 hours",
+   "solana_faucet": "behind a Cloudflare check"
+  },
+  "order_flow": [
+   "POST /api/orders/buy returns a server-built legacy transaction, 1 required signature (the user), user is fee payer",
+   "Privy signs, then shows 'Order signed' / 'Submitting it to Solana now'",
+   "POST /api/orders/submit {signedTransaction, blockhash, lastValidBlockHeight} is sent only after the user presses Close; the server simulates and broadcasts"
+  ],
+  "buy_attempts": [
+   {
+    "n": 1,
+    "utc": "19:48",
+    "asset": "AAPL",
+    "usd": 15,
+    "result": "toast: The transaction expired before it reached the network. Please try again."
+   },
+   {
+    "n": 2,
+    "utc": "19:51",
+    "asset": "AAPL",
+    "usd": 15,
+    "result": "/api/orders/submit 400: Simulation failed. Transaction simulation failed: Blockhash not found."
+   },
+   {
+    "n": 3,
+    "asset": "AAPL",
+    "usd": 15,
+    "build_utc": "19:52:40",
+    "submit_utc": "19:53:22",
+    "build_to_submit_s": 41.8,
+    "blockhash": "6JCcuAhddvuuhPzhCyVEHHwdiFYg4cefUrJe1DyGMgZU",
+    "blockhash_valid_on_public_devnet_10s_after_build": true,
+    "signed_tx_blockhash_unchanged": true,
+    "lastValidBlockHeight_sent": 490360999,
+    "block_height_at_68s": 490361261,
+    "result": "/api/orders/submit 400: Blockhash not found"
+   },
+   {
+    "n": 4,
+    "utc": "19:55:16",
+    "asset": "NVDA",
+    "usd": 10,
+    "result": "landed",
+    "tx": "4SnR2uxSL346dMgKEMNveTtHLu9YAr3aZGn4CmreHAbnWfsGjJE2fKK27FMCYWmLpDx6jUbWGf8VFZSCvvJ8mJgS",
+    "slot": 503107478,
+    "program": "SPoRXgsB4gWZmWPwyndoRWQrmZXKUc7o7oPMdkkGRcG",
+    "instruction": "PlaceBuyOrder",
+    "order_account": "6C1gwSbmfV7tUeXjTtgv6JVuD2vUqiWkvU2RDkS1UBYS",
+    "token_mint": "FJwVgQprbLvhb5SSiKRNv9aCTKakVQFzetRf8Tpag14W",
+    "usdc_amount": 10,
+    "asset_amount": 0.044441481,
+    "order_price": 225.015,
+    "fee_lamports": 5000,
+    "wallet_usdc_before_after": [
+     20,
+     10
+    ]
+   }
+  ],
+  "devnet_block_rate": {
+   "blocks_per_s": 6.04,
+   "slots_per_s": 6.04,
+   "measured_over_s": 8,
+   "blockhash_validity_blocks": 150,
+   "blockhash_window_s": 24.8,
+   "measured_utc": "19:54"
+  },
+  "order_state_after_landing": {
+   "success_modal": "Your purchase has been confirmed / You own 0.04 NVDA / Bought at $225.06 / Total paid $10.00",
+   "portfolio_holdings": "No Holdings",
+   "open_orders_status": "(blank)",
+   "activity_status": "Order received",
+   "status_endpoint": "[] at 19:57 and 20:01 UTC",
+   "filled_by_20_01_utc": false,
+   "market": "closed at 20:00 UTC, next open 17h28m later"
+  },
+  "fee_shown": {
+   "your_cost_today": "$10.00",
+   "order_usdc_vs_price": "10 USDC / 225.015 = 0.044441 NVDA, full amount, no fee deducted at placement",
+   "docs_fee_page": "0.20%",
+   "terms": "0.25%"
+  },
+  "aapl_price": {
+   "shown_usd": 228.5,
+   "seen_utc": [
+    "19:27",
+    "19:35",
+    "19:48",
+    "19:51"
+   ],
+   "api_on_request_usd": 336.38,
+   "current_price_request_symbols": [
+    "BSOL",
+    "GLD",
+    "GOOG",
+    "GS",
+    "IBIT",
+    "MSTR",
+    "NVDA",
+    "PFE",
+    "SMCI",
+    "XOM"
+   ],
+   "quote_for_15_usd": "Buy 0.07 AAPL",
+   "shares_at_api_price": 0.0446
+  },
+  "borrow_cost_column_pct_per_yr": {
+   "BSOL": 0.0,
+   "GLD": 0.06,
+   "GOOG": 0.54,
+   "GS": 0.86,
+   "IBIT": 0.55,
+   "MSTR": 0.58,
+   "NVDA": 0.0,
+   "PFE": 0.07,
+   "SMCI": 0.0,
+   "XOM": 0.8,
+   "AAPL": 0.37
+  },
+  "copy": {
+   "banner": "0% Interest on borrowing. Always, no matter the market conditions.",
+   "borrower_cost_tooltip": "No interest, no monthly payments — a covered call on your stock funds the loan, so borrower cost is just that capped-away upside, annualized. Cost for the same loan, per year: Spout < 0.5%, Traditional brokers 5–13%+",
+   "leverage_tooltip": "Leverage lets you control more stock with less cash. At 1.0× you pay full price. At 2.0× you put up half and borrow half at 0% interest. Higher leverage means more upside but also more borrower cost.",
+   "borrow_header": "Borrow at 0% interest. Use your tokenized stocks as collateral. No interest, no margin calls, no hidden fees.",
+   "health_factor_tooltip": "How safe your loan is. It falls as you borrow more against the same collateral; at 1.00 your collateral can be liquidated to cover the debt.",
+   "ltv_slider_marks": [
+    "0%",
+    "25%",
+    "50% (max)"
+   ],
+   "earn_tab": "Earn is coming soon. Lending vaults are on the way.",
+   "tour_step_1": "Spout lets you buy real stocks, use them to back a 0% loan, and earn interest on spare cash.",
+   "ask_spout_reply_to_assignment_question": "You need to own an spAsset first, so buy a stock on the Buy page if you have not. Then on the Borrow page, choose your collateral, set how much you want to borrow with the LTV slider, and confirm. You receive USDC. There is no interest, and no repayment schedule.",
+   "page_title_on_every_route": "Buy | Spout Finance"
+  },
+  "placeholders_in_app_bundle": {
+   "chunk": "beta.spout.finance/_next/static/chunks/2hp5j2lm92i_d.js, export ASSETS",
+   "ASSETS_table": {
+    "AAPL": {
+     "marketCap": "$3.45T",
+     "price": 228.5,
+     "estBcPct": 0.37
+    },
+    "NVDA": {
+     "marketCap": "$3.54T",
+     "price": 170,
+     "estBcPct": 0
+    },
+    "GOOG": {
+     "marketCap": "$2.48T",
+     "price": 201.3,
+     "estBcPct": 0.54
+    },
+    "XOM": {
+     "marketCap": "$462B",
+     "price": 118.4,
+     "estBcPct": 0.8
+    },
+    "GS": {
+     "marketCap": "$196B",
+     "price": 612,
+     "estBcPct": 0.86
+    },
+    "PFE": {
+     "marketCap": "$137B",
+     "price": 24.88,
+     "estBcPct": 0.07
+    },
+    "MSTR": {
+     "marketCap": "$95.8B",
+     "price": 1705,
+     "estBcPct": 0.58
+    },
+    "GLD": {
+     "marketCap": "$82.1B",
+     "price": 245.1,
+     "estBcPct": 0.06
+    },
+    "IBIT": {
+     "marketCap": "$63.4B",
+     "price": 61.2,
+     "estBcPct": 0.55
+    },
+    "SMCI": {
+     "marketCap": "$23.6B",
+     "price": 42.3,
+     "estBcPct": 0
+    },
+    "BSOL": {
+     "marketCap": "$1.2B",
+     "price": 25.4,
+     "estBcPct": 0
+    }
+   },
+   "reserves_line": "string literal: Held 1:1 at Alpaca Securities · Reserves 100.2% (rendered as a span, no link, no data source)",
+   "proof_of_reserves_footer": "plain span 'Onchain proof of reserves', no link"
+  },
+  "market_data_catalogue": {
+   "endpoint": "/api/market-data/instruments",
+   "instruments": 10,
+   "missing": "AAPL",
+   "estBorrowCostBps": {
+    "BSOL": 0,
+    "GLD": 6,
+    "GOOG": 54,
+    "GS": 86,
+    "IBIT": 55,
+    "MSTR": 58,
+    "NVDA": 0,
+    "PFE": 7,
+    "SMCI": 0,
+    "XOM": 80
+   },
+   "matches_ASSETS_estBcPct": "all 10, to the basis point",
+   "bars_per_instrument": 21
+  },
+  "aapl_oracle": {
+   "stork_feed": "3PD8BMMTDsgg5CaQ4mMsc8MnSWPGKk3aAj1ZDvUvfy7g",
+   "owner": "stork1JUZMKYgjNagHiK2KdMmb42iTnYe9bYUCDUk8n",
+   "price_usd": 336.823,
+   "timestamp_utc": "2026-09-23T20:15:56Z",
+   "quote_15_usd_on_screen": "0.07 (15/228.5 = 0.0656)",
+   "order_would_buy": 0.0445
+  },
+  "place_buy_order_ix_data": {
+   "layout": "8-byte discriminator, u128 order id, string ticker, u64 usdc amount (6 dp), u128 limit price (0 = market)",
+   "example_AAPL_5_usdc": "2ffdf1d6a7cc0b27 | order id | 04000000 4141504c (AAPL) | 404b4c0000000000 (5,000,000) | 0"
+  },
+  "identity_and_keys": {
+   "identity_account": "Acv7re1khcqTeYtMxFT8XL3uC2V4ofsTCFHnXY612hMi (owner SKYCVrkX3mQaHwZcLrUtuvzii43kma7kBUim5MaQm6k, 35 bytes)",
+   "created_tx": "5nU6tC4YgEHqPB9VCc6J9r93J4xSnDvGmFQoPEzhsBfEd16xx17wHTV3fP3aahXLk2BFGLcFuDuwGRPYPJaqCjej",
+   "created_utc": "19:41:43",
+   "fee_payer_and_signer": "7N31cE8BRTpyAVDeczkutP4EnGdQJLSQm4q3SJ6aYWEp",
+   "instructions": [
+    "CreateIdentityForUser",
+    "SetVerified"
+   ],
+   "kyc_prompted": false,
+   "key_7N31_roles": [
+    "upgrade authority, orders program",
+    "upgrade authority, vault program",
+    "freeze authority, NVDA spAsset mint",
+    "freeze authority, AAPL spAsset mint",
+    "fee payer and signer of CreateIdentityForUser + SetVerified"
+   ],
+   "spAsset_mints": {
+    "NVDA": {
+     "mint": "FJwVgQprbLvhb5SSiKRNv9aCTKakVQFzetRf8Tpag14W",
+     "program": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+     "extensions": null,
+     "supply": 0.353827639,
+     "mint_authority": "85BqDF1GYShALDKdZvf9asRwwp9fciwnwRPZfbXGXnM1"
+    },
+    "AAPL": {
+     "mint": "4Kfbn6ctLSz6yppLXUJ9hiXvtF2kANghFUUtsFJVmiEL",
+     "program": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+     "extensions": null,
+     "supply": 0.140413867,
+     "mint_authority": "GeTPAcNMgWMPxLuJrhfwP9ge7kjWZX2Sdj3ZVhZGfuSH"
+    }
+   },
+   "other_wallet_txs": {
+    "19:44:54": "1 SOL from faucet.solana.com, fee payer dev2JBjyB5CshoGsiJCwzdmJYiEUwAXMdqDR7txoFBJ",
+    "19:46:45": "20 USDC from Circle faucet, fee payer BS5QyQcsFbrep8mNrCh5DtnTaihB2C2HUZEW8UJbY2xM"
+   }
+  }
  }
 }
