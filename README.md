@@ -151,6 +151,8 @@ Activity to September 23, 18:09 UTC. The orders program has 3,198 transactions s
 
 The vault's program logs show what beta users actually did across 338 transactions. There were 97 collateral deposits, 114 borrows, 36 repayments and 10 collateral top-ups. Four positions were liquidated, each through a SeizeCollateral and a SettleLiquidationDownside call. Lending barely exists yet, with one liquidity deposit in total, which matches the docs' note that the lending market is still rolling out.
 
+The orders program shows the friction users hit. In its most recent 600 transactions, 59 wallets placed 343 buy orders and 12 sell orders. In the same window the program filled 126 buys and 5 sells and received 102 cancel requests, so nearly one buy order in three drew a cancel. I cannot see the reason from outside. One likely cause is that fills wait for the broker, so an order placed at night or at the weekend just sits. Whatever the cause, the app should show the expected fill time before the user confirms and the order's status after.
+
 Two instructions need attention before mainnet. The vault exposes SetMockFeed, which sets a price by hand, and it was called 7 times. That is fine on devnet. It must not exist in the mainnet binary, and a verifiable build is the way to prove it. There were also 46 MigrateVaultPosition and 19 MigrateCollateralType calls, so live positions were rewritten by upgrades. Freeze the account layout before the audit, not after it.
 
 ## 7. Product insight: who this is for, and how to sell it honestly
@@ -201,11 +203,12 @@ The fix is one parameter file. Generate the docs tables, the homepage FAQ and th
 3. Net-settle assignments, as the homepage describes, instead of repaying the loan out of the sale. Keep the loan open and the share count near where it was. Notify the user and offer a one-tap re-borrow if anything changes.
 4. Enroll only the collateral that backs the loan, or let users choose how much is locked, so borrowing a little does not cost as much upside as borrowing a lot.
 5. Open the borrow slider at a data-driven safe LTV per asset, about 29% for NVDA on ten years of data. Show distance to liquidation as a price fall, not a health factor.
-6. Publish the per-asset parameters: buffer, liquidation line, cadence, strike rule and execution quality against mid. Take BSOL off the weekly list until weekly options exist.
-7. Write down the Friday sequence and the holiday rules: overlap or gap, Good Friday, early closes and Monday holidays for the 9am settlement.
-8. Before mainnet, move both program upgrade authorities to a multisig with a timelock, ship a verifiable build with no SetMockFeed path, and publish the program IDs, the Proof of Reserve account and the insurance fund address in the docs.
-9. Offer a rate mode next to upside mode, so a Kamino borrower gets a choice rather than a trade-down.
-10. Auto-issue devnet passcodes to bounty applicants, and call the network by its real name.
+6. Show when a buy or sell will fill before the user confirms it, and its status after. On devnet, nearly one buy order in three drew a cancel request.
+7. Publish the per-asset parameters: buffer, liquidation line, cadence, strike rule and execution quality against mid. Take BSOL off the weekly list until weekly options exist.
+8. Write down the Friday sequence and the holiday rules: overlap or gap, Good Friday, early closes and Monday holidays for the 9am settlement.
+9. Before mainnet, move both program upgrade authorities to a multisig with a timelock, ship a verifiable build with no SetMockFeed path, and publish the program IDs, the Proof of Reserve account and the insurance fund address in the docs.
+10. Offer a rate mode next to upside mode, so a Kamino borrower gets a choice rather than a trade-down.
+11. Auto-issue devnet passcodes to bounty applicants, and call the network by its real name.
 
 ## Method and limits
 
