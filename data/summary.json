@@ -1,0 +1,711 @@
+{
+ "meta": {
+  "generated": "2026-09-23",
+  "source_prices": "Yahoo Finance v8 chart API, daily OHLC, split-adjusted, 2016-09-23 to 2026-09-23, fetched 2026-09-23",
+  "source_options": "Cboe delayed quotes JSON (cdn.cboe.com/api/global/delayed_quotes/options/<SYM>.json), fetched 2026-09-23 ~14:30 ET",
+  "cycle": "entry = open of last trading day of week w (normally Friday); expiry = close of last trading day of week w+1 (Spout docs: enter Friday open, expire following Friday close)",
+  "T_years": "6/252",
+  "strike_rule": "K = entry_open * exp(k * RV60 * sqrt(T)); RV60 = trailing 60-day close-to-close realized vol before entry",
+  "premium_model": "Black-Scholes call, r=0, IV = m * RV60; base m=1.15, sensitivity m=1.0 and 1.3",
+  "earnings_skip_proxy": "single names only: in each calendar quarter the largest overnight gap is treated as the earnings reaction and the cycle containing it earns no premium and costs nothing (removes every earnings reaction plus any larger shock that quarter, so it flatters Spout)",
+  "cycles": {
+   "AAPL": 508,
+   "NVDA": 508,
+   "GOOG": 508,
+   "SMCI": 508,
+   "IBIT": 127,
+   "MSTR": 508,
+   "BSOL": 33,
+   "PFE": 508,
+   "GS": 508,
+   "XOM": 508,
+   "GLD": 508
+  },
+  "cycles_total": 4732,
+  "docs_tranche_example": "gross premium $30,000/week on $10m pool = 15.6%/yr of pool; Senior 8.9%, Junior 32.8%, blended 12.48%",
+  "required_premium_on_collateral_at_50pct_LTV_full_utilisation": 0.078,
+  "verified": "backtest.js re-run end to end in a browser on 2026-09-23; output reproduced every figure in this file"
+ },
+ "required_strike_for_docs_yield_m115_skip": {
+  "AAPL": {
+   "k": 1.68,
+   "cost": 4.36,
+   "assign_pct": 3.9
+  },
+  "NVDA": {
+   "k": 1.97,
+   "cost": 2.46,
+   "assign_pct": 1.5
+  },
+  "GOOG": {
+   "k": 1.7,
+   "cost": 2.9,
+   "assign_pct": 3.8
+  },
+  "SMCI": {
+   "k": 2.14,
+   "cost": 9.66,
+   "assign_pct": 2.6
+  },
+  "IBIT": {
+   "k": 2.01,
+   "cost": 7.3,
+   "assign_pct": 3.1
+  },
+  "MSTR": {
+   "k": 2.14,
+   "cost": 6.84,
+   "assign_pct": 2.2
+  },
+  "PFE": {
+   "k": 1.58,
+   "cost": 5.13,
+   "assign_pct": 4.5
+  },
+  "GS": {
+   "k": 1.69,
+   "cost": 2.71,
+   "assign_pct": 3.2
+  },
+  "XOM": {
+   "k": 1.65,
+   "cost": 2.49,
+   "assign_pct": 3.9
+  },
+  "GLD": {
+   "k": 1.39,
+   "cost": 6.29,
+   "assign_pct": 8.9
+  },
+  "BSOL": {
+   "note": "33 cycles, no assignments in sample, excluded from averages"
+  }
+ },
+ "required_strike_for_docs_yield_m115_noskip": {
+  "AAPL": 6.43,
+  "NVDA": 4.45,
+  "GOOG": 5.97,
+  "SMCI": 13.76,
+  "IBIT": 7.3,
+  "MSTR": 7.16,
+  "PFE": 6.7,
+  "GS": 4.13,
+  "XOM": 2.98,
+  "GLD": 6.28
+ },
+ "portfolio_avg_cost_pct_of_collateral": {
+  "m1.00": {
+   "skip": 8.39,
+   "noskip": 10.47
+  },
+  "m1.15": {
+   "skip": 5.01,
+   "noskip": 6.52
+  },
+  "m1.30": {
+   "skip": 2.87,
+   "noskip": 3.95
+  },
+  "note": "skip = earnings-skip proxy; noskip = no skipping at all, strike re-solved for the same premium"
+ },
+ "cost_per_dollar_borrowed_vs_avg_ltv_m115_skip": {
+  "0.50": {
+   "premium_needed": 7.8,
+   "cost_collateral": 5.01,
+   "cost_per_dollar": 10.0
+  },
+  "0.375": {
+   "premium_needed": 5.85,
+   "cost_collateral": 3.92,
+   "cost_per_dollar": 10.5
+  },
+  "0.30": {
+   "premium_needed": 4.7,
+   "cost_collateral": 3.27,
+   "cost_per_dollar": 10.9
+  },
+  "0.25": {
+   "premium_needed": 3.9,
+   "cost_collateral": 2.8,
+   "cost_per_dollar": 11.2
+  }
+ },
+ "strike_for_half_pct_cost_m115_skip_premium": {
+  "AAPL": 0.82,
+  "NVDA": 1.29,
+  "GOOG": 2.83,
+  "SMCI": 0.41,
+  "MSTR": 0.56,
+  "PFE": 0.47,
+  "GS": 1.55,
+  "XOM": 1.42,
+  "GLD": 0.43,
+  "IBIT": "not reachable: cost stays above 0.5% even at 3.5 sigma",
+  "avg9": 1.09,
+  "lender_blended_apy_at_50pct_ltv_full_util": 1.74
+ },
+ "liquidation_within_52w_max_ltv_pct": {
+  "cols": [
+   "-7.4% (4% buffer)",
+   "-15.0% (NVDA documented 58.8% line)",
+   "-20.0% (12.5% buffer)"
+  ],
+  "AAPL": [
+   60.8,
+   35.7,
+   25.8
+  ],
+  "NVDA": [
+   68.7,
+   49.0,
+   40.9
+  ],
+  "GOOG": [
+   56.2,
+   34.8,
+   22.5
+  ],
+  "SMCI": [
+   82.3,
+   68.9,
+   57.1
+  ],
+  "IBIT": [
+   88.2,
+   78.9,
+   73.7
+  ],
+  "MSTR": [
+   84.0,
+   65.9,
+   58.4
+  ],
+  "PFE": [
+   69.8,
+   54.3,
+   43.3
+  ],
+  "GS": [
+   69.6,
+   47.5,
+   37.2
+  ],
+  "XOM": [
+   75.9,
+   39.4,
+   23.6
+  ],
+  "GLD": [
+   31.5,
+   2.2,
+   0.0
+  ]
+ },
+ "liquidation_within_13w_max_ltv_pct": {
+  "AAPL": [
+   41.5,
+   15.3,
+   9.3
+  ],
+  "NVDA": [
+   57.7,
+   30.2,
+   22.6
+  ],
+  "GOOG": [
+   40.5,
+   18.1,
+   8.5
+  ],
+  "SMCI": [
+   72.0,
+   51.2,
+   36.3
+  ],
+  "IBIT": [
+   76.5,
+   54.8,
+   44.3
+  ],
+  "MSTR": [
+   71.0,
+   49.0,
+   40.5
+  ],
+  "PFE": [
+   50.8,
+   19.8,
+   8.3
+  ],
+  "GS": [
+   47.0,
+   17.7,
+   8.9
+  ],
+  "XOM": [
+   46.8,
+   14.1,
+   7.5
+  ],
+  "GLD": [
+   16.5,
+   1.4,
+   0.2
+  ]
+ },
+ "liquidation_within_4w_max_ltv_pct": {
+  "AAPL": [
+   24.6,
+   5.0,
+   2.0
+  ],
+  "NVDA": [
+   43.6,
+   17.2,
+   8.9
+  ]
+ },
+ "autoroll_docs_mechanics_kreq_skip": {
+  "cols": [
+   "P(loan repaid by assignment within 13w)",
+   "26w",
+   "52w",
+   "median shares left of 100 after 52w",
+   "p10 shares"
+  ],
+  "AAPL": [
+   41.6,
+   69.6,
+   95.0,
+   51.8,
+   45.2
+  ],
+  "NVDA": [
+   13.3,
+   24.7,
+   47.5,
+   100.0,
+   54.5
+  ],
+  "GOOG": [
+   36.3,
+   59.3,
+   83.2,
+   55.6,
+   46.1
+  ],
+  "SMCI": [
+   31.3,
+   53.2,
+   75.5,
+   56.0,
+   35.1
+  ],
+  "IBIT": [
+   50.0,
+   73.7,
+   100.0,
+   57.5,
+   47.8
+  ],
+  "MSTR": [
+   20.6,
+   34.8,
+   62.1,
+   54.9,
+   36.0
+  ],
+  "PFE": [
+   47.5,
+   68.1,
+   89.3,
+   49.0,
+   40.4
+  ],
+  "GS": [
+   31.9,
+   51.4,
+   69.1,
+   55.1,
+   45.5
+  ],
+  "XOM": [
+   38.7,
+   63.7,
+   84.0,
+   50.0,
+   45.7
+  ],
+  "GLD": [
+   66.1,
+   90.8,
+   100.0,
+   47.7,
+   43.5
+  ]
+ },
+ "drawdown_from_entry": {
+  "cols": [
+   "52w p50",
+   "52w p75",
+   "52w p90",
+   "13w p90"
+  ],
+  "AAPL": [
+   11.4,
+   20.2,
+   27.3,
+   19.5
+  ],
+  "NVDA": [
+   14.5,
+   34.5,
+   50.2,
+   30.5
+  ],
+  "GOOG": [
+   9.6,
+   18.9,
+   28.6,
+   18.9
+  ],
+  "SMCI": [
+   24.0,
+   48.2,
+   63.1,
+   44.2
+  ],
+  "IBIT": [
+   25.8,
+   40.0,
+   49.7,
+   30.0
+  ],
+  "MSTR": [
+   32.3,
+   50.9,
+   73.6,
+   45.8
+  ],
+  "PFE": [
+   17.7,
+   27.0,
+   33.4,
+   19.1
+  ],
+  "GS": [
+   13.7,
+   29.2,
+   36.8,
+   18.7
+  ],
+  "XOM": [
+   12.5,
+   19.3,
+   54.7,
+   17.3
+  ],
+  "GLD": [
+   4.1,
+   8.9,
+   11.9,
+   9.1
+  ]
+ },
+ "worst_cycle_payoff_at_kreq_pct_of_collateral": {
+  "AAPL": [
+   9.6,
+   "2020-07-24"
+  ],
+  "NVDA": [
+   11.7,
+   "2017-05-05"
+  ],
+  "GOOG": [
+   6.6,
+   "2021-01-29"
+  ],
+  "SMCI": [
+   34.6,
+   "2024-11-15"
+  ],
+  "IBIT": [
+   11.2,
+   "2026-08-14"
+  ],
+  "MSTR": [
+   23.5,
+   "2024-02-23"
+  ],
+  "PFE": [
+   9.2,
+   "2025-09-26"
+  ],
+  "GS": [
+   7.0,
+   "2024-11-01"
+  ],
+  "XOM": [
+   6.8,
+   "2021-12-31"
+  ],
+  "GLD": [
+   3.9,
+   "2020-03-20"
+  ]
+ },
+ "weekend_gaps_10y": {
+  "cols": [
+   "count <= -7.4%",
+   "worst (Monday date, %)"
+  ],
+  "AAPL": [
+   3,
+   "2020-03-16 -13.0"
+  ],
+  "NVDA": [
+   7,
+   "2019-01-28 -14.7"
+  ],
+  "GOOG": [
+   1,
+   "2020-03-16 -10.1"
+  ],
+  "SMCI": [
+   6,
+   "2024-08-05 -14.3"
+  ],
+  "IBIT": [
+   2,
+   "2024-08-05 -20.4"
+  ],
+  "MSTR": [
+   9,
+   "2024-08-05 -27.4"
+  ],
+  "BSOL": [
+   3,
+   "2026-02-02 -11.6"
+  ],
+  "PFE": [
+   1,
+   "2020-03-16 -8.5"
+  ],
+  "GS": [
+   2,
+   "2020-03-16 -15.2"
+  ],
+  "XOM": [
+   2,
+   "2020-03-09 -12.5"
+  ],
+  "GLD": [
+   0,
+   "2020-03-16 -4.0"
+  ]
+ },
+ "worst_1d_close_to_close": {
+  "AAPL": "-12.9% 2020-03-16",
+  "NVDA": "-18.8% 2018-11-16",
+  "GOOG": "-11.1% 2020-03-16",
+  "SMCI": "-41.1% 2018-10-04",
+  "IBIT": "-14.4% 2024-08-05",
+  "MSTR": "-26.0% 2017-07-28",
+  "BSOL": "-15.6% 2026-02-05",
+  "PFE": "-7.7% 2020-03-16",
+  "GS": "-12.7% 2020-03-16",
+  "XOM": "-12.2% 2020-03-09",
+  "GLD": "-10.3% 2026-01-30"
+ },
+ "live_chain_2026_10_02_weekly_delta10": {
+  "cols": [
+   "spot",
+   "iv30",
+   "strike",
+   "pct_otm",
+   "bid",
+   "ask",
+   "mid_pct_of_spot_per_week"
+  ],
+  "AAPL": [
+   339.84,
+   22.3,
+   357.5,
+   5.2,
+   0.54,
+   0.62,
+   0.171
+  ],
+  "NVDA": [
+   228.56,
+   31.2,
+   245,
+   7.2,
+   0.64,
+   0.65,
+   0.282
+  ],
+  "GOOG": [
+   348.19,
+   31.2,
+   375,
+   7.7,
+   0.79,
+   0.85,
+   0.236
+  ],
+  "SMCI": [
+   41.51,
+   72.3,
+   50,
+   20.4,
+   0.25,
+   0.27,
+   0.626
+  ],
+  "IBIT": [
+   48.83,
+   38.5,
+   54,
+   10.6,
+   0.14,
+   0.16,
+   0.307
+  ],
+  "MSTR": [
+   167.95,
+   70.3,
+   205,
+   22.1,
+   1.01,
+   1.18,
+   0.652
+  ],
+  "PFE": [
+   27.9,
+   21.4,
+   29.5,
+   5.7,
+   0.02,
+   0.05,
+   0.125
+  ],
+  "GS": [
+   950.5,
+   33.6,
+   1020,
+   7.3,
+   1.59,
+   2.7,
+   0.226
+  ],
+  "XOM": [
+   158.92,
+   29.1,
+   170,
+   7.0,
+   0.29,
+   0.4,
+   0.217
+  ],
+  "GLD": [
+   400.07,
+   21.0,
+   422,
+   5.5,
+   0.66,
+   0.79,
+   0.181
+  ],
+  "BSOL": "no weekly expiries; first listed expiry 2026-10-16 (monthly); OTM calls at K19/21/22 had zero bids"
+ },
+ "rv60_latest": {
+  "AAPL": 0.3241,
+  "NVDA": 0.404,
+  "GOOG": 0.3604,
+  "SMCI": 0.9249,
+  "IBIT": 0.3726,
+  "MSTR": 0.8765,
+  "BSOL": 0.5793,
+  "PFE": 0.2292,
+  "GS": 0.3519,
+  "XOM": 0.2422,
+  "GLD": 0.2505
+ },
+ "benchmarks": {
+  "ibkr_pro_usd_0_100k": 5.38,
+  "ibkr_lite_usd": 6.38,
+  "spout_docs_us_retail_margin": "8-13%",
+  "spout_docs_emerging_markets": "30-50%",
+  "kamino_tokenized_stock_collateral": "Kamino ~82.6% of Solana tokenized-stock lending; tokenized stock collateral ATH $53m late July 2026 (KuCoin News, Aug 11 2026)"
+ },
+ "earnings_proxy_variants_avg_cost_pct_of_collateral_m115": {
+  "largest_abs_gap_per_quarter": 5.01,
+  "largest_up_gap_per_quarter": 4.16,
+  "both": 4.22,
+  "none": 6.52
+ },
+ "onchain_devnet_2026_09_23": {
+  "rpc_in_app_bundle": "https://api.devnet.solana.com",
+  "program_ids_from_bundle_config": {
+   "orders": "SPoRXgsB4gWZmWPwyndoRWQrmZXKUc7o7oPMdkkGRcG",
+   "vault": "spvaDgABYdpFKyatqo4Jr3nfwvVgWF5BbFxKFkzN3Am",
+   "onchainId": "SKYCVrkX3mQaHwZcLrUtuvzii43kma7kBUim5MaQm6k",
+   "stork": "stork1JUZMKYgjNagHiK2KdMmb42iTnYe9bYUCDUk8n"
+  },
+  "known_accounts_from_bundle_config": {
+   "usdcMint": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+   "alpacaOwner": "7YBM7UQitFS9rJR2YEfnXmGEJREfstKfRBjZRRyatqo2",
+   "alpacaUsdcAta": "ADZRYU7F5t4vzhBCihr9faNEYPbGAHYCiC8c3mkZKR2d"
+  },
+  "upgrade_authority_orders_and_vault": "7N31cE8BRTpyAVDeczkutP4EnGdQJLSQm4q3SJ6aYWEp (system-owned, no data, fee payer and sole signer of its own recent transactions = single keypair)",
+  "upgrade_authority_onchainId": "BD29wQ5Tj7b1MEFqquRxASsTqoN38oCrjxpU4riTZx7C",
+  "last_deploy_slot": {
+   "orders": 496847055,
+   "vault": 502953420,
+   "onchainId": 471213774
+  },
+  "tx_counts_to_2026_09_23T18_09Z": {
+   "orders": {
+    "n": 3198,
+    "failed": 0,
+    "first": "2026-06-08T09:50Z"
+   },
+   "vault": {
+    "n": 340,
+    "failed": 0,
+    "first": "2026-08-04T11:18Z"
+   },
+   "alpacaUsdcAta": {
+    "n": 2700,
+    "first": "2026-07-27T12:46Z",
+    "balance": "0"
+   }
+  },
+  "vault_instruction_mix_338_txs": {
+   "unique_fee_payers": 39,
+   "top_payer_share": 0.385,
+   "DepositCollateral": 97,
+   "InitializeVault": 97,
+   "BorrowStablecoin": 114,
+   "RepayDebt": 36,
+   "TopUpCollateral": 10,
+   "SeizeCollateral": 4,
+   "SettleLiquidationDownside": 4,
+   "SetMockFeed": 7,
+   "CreateOracleConfig": 12,
+   "MigrateVaultPosition": 46,
+   "MigrateCollateralType": 19,
+   "MigrateLpPoolState": 2,
+   "CreateCollateralType": 24,
+   "InitializeCollateralPool": 23,
+   "UpdateCollateralType": 4,
+   "DisableCollateralType": 1,
+   "DepositLiquidity": 1,
+   "InitializeInsuranceFund": 1,
+   "InitializeLpPool": 1,
+   "ThawVaultEscrow": 61,
+   "SetPreferences": 5
+  }
+ }
+}
