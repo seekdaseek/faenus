@@ -997,8 +997,7 @@
    "key_7N31_roles": [
     "upgrade authority, orders program",
     "upgrade authority, vault program",
-    "freeze authority, NVDA spAsset mint",
-    "freeze authority, AAPL spAsset mint",
+    "freeze authority on all 8 spAsset mints named in the app bundle, NVDA and AAPL included",
     "fee payer and signer of CreateIdentityForUser + SetVerified"
    ],
    "spAsset_mints": {
@@ -1020,6 +1019,21 @@
    "other_wallet_txs": {
     "19:44:54": "1 SOL from faucet.solana.com, fee payer dev2JBjyB5CshoGsiJCwzdmJYiEUwAXMdqDR7txoFBJ",
     "19:46:45": "20 USDC from Circle faucet, fee payer BS5QyQcsFbrep8mNrCh5DtnTaihB2C2HUZEW8UJbY2xM"
+   },
+   "spAsset_mints_in_bundle_checked": {
+    "count": 8,
+    "all_freeze_authority": "7N31cE8BRTpyAVDeczkutP4EnGdQJLSQm4q3SJ6aYWEp",
+    "all_program": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+    "mints": [
+     "FJwVgQprbLvhb5SSiKRNv9aCTKakVQFzetRf8Tpag14W",
+     "4Kfbn6ctLSz6yppLXUJ9hiXvtF2kANghFUUtsFJVmiEL",
+     "BMj7m9JpTkg4d425oqfWdTwihddNiwBxEmcezs4r3te2",
+     "Hm36ttF2xFrBY6XVXHgBuMYw4Y6axNmXpSDHhhm6jKHS",
+     "Cr4GetXzg9jyxGmBTX7aRJe2SrFUepVT5Dnh66vkAWTJ",
+     "HMTQEQBQmMaLebydPstuiXnVmXKcNG3CoemfC6rqYh9n",
+     "vtPfjmCoJxYwHrRE9cU88uAsm1kzYH4y2ZHBDq3NS6i",
+     "6AQa4pfPbvT3VsNxHdTSq59c7wKHtz7WQf6YN47jH9WV"
+    ]
    }
   }
  }
