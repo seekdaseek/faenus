@@ -1,4 +1,4 @@
-// faenus / backtest.js
+// pretium / backtest.js
 // What Spout Finance's "0% interest" costs, measured on 10 years of daily prices for all 11 launch assets.
 // Run: open https://query1.finance.yahoo.com/v8/finance/chart/AAPL in a browser, open DevTools console,
 // paste this whole file, press Enter. Same-origin fetches, no API key. Prints a JSON summary.
@@ -128,5 +128,5 @@
 
   R.cyclesTotal = Object.values(R.cycles).reduce((a,b)=>a+b,0);
   console.log(JSON.stringify(R, null, 1));
-  window.FAENUS = R;
+  window.PRETIUM = R;
 })();
