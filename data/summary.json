@@ -706,6 +706,21 @@
    "InitializeLpPool": 1,
    "ThawVaultEscrow": 61,
    "SetPreferences": 5
+  },
+  "orders_instruction_mix_latest_600_txs": {
+   "unique_fee_payers": 59,
+   "top_payer_share": 0.255,
+   "PlaceBuyOrder": 343,
+   "PlaceSellOrder": 12,
+   "RequestCancelOrder": 102,
+   "FulfillBuyOrderKycGated": 68,
+   "FulfillBuyOrderFreezeGated": 58,
+   "FulfillSellOrderKycGated": 4,
+   "FulfillSellOrderFreezeGated": 1,
+   "MintKycGated": 68,
+   "MintFreezeGated": 58,
+   "CreateOracleConfig": 11,
+   "CreateTokenEscrow": 11
   }
  }
 }
